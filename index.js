@@ -1,8 +1,17 @@
 import fs from 'fs';
 
-const lines = fs.readFileSync('input.txt', 'utf-8').split('\n');
+const lines = fs.readFileSync('skupiny.txt', 'utf-8').split('\n');
 
-for (let i = 0; i < lines.length; i++) {
-  const line = lines[i];
-  console.log(i, line);
+const groups = [];
+let group = [];
+
+for (const line of lines) {
+  if (line === '') {
+    groups.push(group);
+    group = [];
+  } else {
+    group.push(line);
+  }
 }
+
+groups.push(group);
